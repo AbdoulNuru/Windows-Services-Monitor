@@ -1,3 +1,5 @@
+import sendEmail from './utils/emailSender';
+
 const exec = require('child_process').exec;
 
 const isRunning = (query, cb) => {
@@ -16,5 +18,9 @@ const isRunning = (query, cb) => {
 }
 
 isRunning('chrome', (status) => {
-    console.log(status); // true|false
+    if(status === false){
+        sendEmail();
+    }else{
+        console.log(status); // true|false
+    }
 })
